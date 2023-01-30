@@ -4,14 +4,21 @@ using UnityEngine;
 
 public class GunScript : MonoBehaviour
 {
-    [SerializeField]
-    float sens;
+
+    public static Vector3 mousePos, direction;
+    public static float angle;
+
+    private void Awake()
+    {
+        mousePos = Vector3.zero;
+    }
 
     private void Update()
     {
         var objectPos = Camera.main.ScreenToWorldPoint(transform.position);
-        var dir = (-Input.mousePosition - objectPos) * sens * Time.deltaTime;
+        direction = (mousePos - objectPos);
 
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, Mathf.Atan2(-dir.x, dir.y) * Mathf.Rad2Deg));
+        angle = Mathf.Atan2(-direction.x, direction.y) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
 }
