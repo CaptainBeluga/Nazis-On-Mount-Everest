@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GunScript : MonoBehaviour
 {
-
     public static Vector3 mousePos, direction;
     public static float angle;
 

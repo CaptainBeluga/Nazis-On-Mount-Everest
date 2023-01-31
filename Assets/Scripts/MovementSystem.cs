@@ -32,6 +32,7 @@ public class MovementSystem : MonoBehaviour
 
     void Update()
     {
+
         gun = transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.transform.GetChild(1);
 
         //Cursor.visible = false;
@@ -73,7 +74,7 @@ public class MovementSystem : MonoBehaviour
 
             lastMoveTowardsPos = GameObject.Find("MoveTowards").transform.position;
 
-            Instantiate(bullet, spawnPos, Quaternion.Euler(0, 0, GunScript.angle));
+            Instantiate(bullet, spawnPos, Quaternion.Euler(new Vector3(0, 0, -GunScript.angle)));
         }
 
         //Reloading Time
